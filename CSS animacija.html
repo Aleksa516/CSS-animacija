@@ -1,0 +1,89 @@
+<html !DOCTYPE>
+<head>
+    <meta charset="UTF-8">
+    <title>CSS animation</title>
+<style>
+    body{
+        width: 1300px;
+        height: 800px;
+        background-color: #050210;
+        transform-style: preserve-3d ;
+    }
+
+    .outer-circle {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        margin: 35px auto;
+        border: 30px solid transparent;
+        background: linear-gradient(#050210,#050210)padding-box,
+                    linear-gradient( #fb5dad, #55fb9f, #b97aff) border-box;
+        border-radius: 100%;
+        animation: outer-circle-animation 2s linear infinite;
+    }
+
+    .glow {
+        width: 440px;
+        margin:  0 auto;
+        position: relative;
+        height: 440px;
+        border-radius: 100%;
+        transform-style: flat;
+        transform: translate3d(0px, -480px, -20px);
+    }
+
+    .glow::before{
+        content: "";
+        position: absolute;
+        inset: -20px -20px;
+        background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+        filter: blur(20px);
+        border-radius: inherit;
+        animation: outer-circle-animation 2s linear infinite;
+        
+    }
+
+    .inner-circle {
+        position: relative;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        margin-top: 50%;
+        margin-left: 50%;    
+        background-color:#050210;
+        filter: brightness(250%);
+        border-radius: 100%;
+        animation: inner-circle-animation 1s ease infinite;
+    }
+
+    @keyframes inner-circle-animation {
+    from {
+        width: 100px;
+        height: 100px;
+    }
+    to {
+        width: 380px;
+        height: 380px;
+    }
+    }
+    
+    @keyframes outer-circle-animation {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+
+ </style>   
+
+</head>
+
+<body>
+    <div class ="outer-circle">
+        <div class ="inner-circle"></div>
+    </div>
+    <div class="glow"></div>
+</body>
+</html>
